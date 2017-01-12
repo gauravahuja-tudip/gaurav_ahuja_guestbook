@@ -1,0 +1,79 @@
+<div class="container-fluid jumbotron col col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6 col-xs-offset-1 col-xs-10">
+
+      <ul class="nav nav-tabs">
+        <li class="active col-xs-6 text-center">
+          <a data-toggle="tab" href="#login_form_link">Login</a>
+        </li>
+        <li class="col-xs-6 text-center">
+          <a data-toggle="tab" href="#register_form_link" >Register</a>
+        </li>
+      </ul>
+        <br>
+  <div class="tab-content">
+    <div id="login_form_link" class="tab-pane fade in active">
+      <div  [hidden]="submitted">
+        <form *ngIf="loginForm" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="email" class="form-control" id="username" formControlName="username" placeholder="Username/Email">
+                <div [hidden]="loginForm.controls.username.valid || loginForm.controls.username.pristine" class="alert alert-danger">
+                    Username/Email is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password" name="password" placeholder="Password">
+              <div [hidden]="loginForm.controls.password.valid || loginForm.controls.password.pristine" class="alert alert-danger">
+                Password is required.
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-default" [disabled]="!loginForm.valid">Login</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="register_form_link" class="tab-pane fade">
+      <div  [hidden]="submitted">
+        <form *ngIf="registerForm" (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+          <div class="form-group">
+            <label for="firstname">Firstname</label>
+            <input type="text" class="form-control" id="firstname" formControlName="firstname" placeholder="Firstname">
+            <div [hidden]="registerForm.controls.firstname.valid || registerForm.controls.firstname.pristine" class="alert alert-danger">
+             Firstname is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lastname">Lastname</label>
+            <input type="text" class="form-control" id="lastname" formControlName="lastname" name="lastname" placeholder="Lastname">
+            <div [hidden]="registerForm.controls.lastname.valid || registerForm.controls.lastname.pristine" class="alert alert-danger">
+              Lastname is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" class="form-control" id="email" formControlName="email" name="email" placeholder="Email Address">
+            <div [hidden]="registerForm.controls.email.valid || registerForm.controls.email.pristine" class="alert alert-danger">
+              Email Address is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="newpassword">New Password</label>
+            <input type="password" class="form-control" id="newpassword" formControlName="newpassword" name="newpassword" placeholder="New Password">
+            <div [hidden]="registerForm.controls.newpassword.valid || registerForm.controls.newpassword.pristine" class="alert alert-danger">
+              Password is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="con_password">Confirm Password</label>
+            <input type="password" class="form-control" id="con_password" formControlName="con_password" name="con_password" placeholder="Confirm Password">
+            <div [hidden]="registerForm.controls.con_password.valid || registerForm.controls.con_password.pristine" class="alert alert-danger">
+              Password is required.
+            </div>
+          </div>
+           <button type="submit" class="btn btn-default" [disabled]="!registerForm.valid">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
