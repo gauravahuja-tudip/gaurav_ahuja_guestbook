@@ -5,17 +5,22 @@ import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from 'app/Login/login.component';
 import { AppComponent } from './app.component';
+import { DashboardComponent } from 'app/dashboard/dashboard.component';
+import { RouterModule } from '@angular/router';
+import { DashboardAppRoutes } from 'app/app.routing';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+      DashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(DashboardAppRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
