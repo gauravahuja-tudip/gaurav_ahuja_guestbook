@@ -1,0 +1,114 @@
+<div class="wrapper">
+  <div class="sidebar" data-color="purple">
+    <div class="sidebar-wrapper">
+      <div class="logo">
+        <a href="http://www.tudip.com" class="simple-text">
+          Tudip Technologies
+        </a>
+      </div>
+
+      <ul class="nav">
+        <li>
+          <a routerLink="/dashboard" routerLinkActive="active">
+            <p>Visitors</p>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/add_visitor" routerLinkActive="active">
+            <p>Add Visitor</p>
+          </a>
+        </li>
+        <li>
+          <a routerLink="" routerLinkActive="active">
+            <p (click)="logout()">Logout</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-panel">
+    <nav class="navbar navbar-default navbar-fixed">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="navbar-brand">Tudip Visitors</div>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="card">
+              <div class="header">
+                <h4 class="title">Add Visitor</h4>
+              </div>
+              <div class="content">
+                <div [hidden]="submitted">
+                  <form *ngIf="addForm" (ngSubmit)="addVisitorSubmit(addForm)" [formGroup]="addForm">
+                    <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" class="form-control" id="name" formControlName="name"
+                             placeholder="Name">
+                      <div [hidden]="addForm.controls['name'].valid || addForm.controls['name'].pristine"
+                           class="alert alert-danger">
+                        Name is required.
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="email" class="form-control" id="email" formControlName="email" name="email"
+                             placeholder="Email Address">
+                      <div [hidden]="addForm.controls['email'].valid || addForm.controls['email'].pristine"
+                           class="alert alert-danger">
+                        Email Address is required.
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="mobile">Mobile Number</label>
+                      <input type="number" class="form-control" id="mobile" formControlName="mobile" name="mobile"
+                             pattern="[0-9]{10}" placeholder="Mobile Number">
+                      <div [hidden]="addForm.controls['mobile'].valid || addForm.controls['mobile'].pristine"
+                           class="alert alert-danger">
+                        Mobile Number is required.
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="in">In-Time</label>
+                      <input type="text" class="form-control" id="in" formControlName="intime"
+                             name="in" placeholder="In-Time">
+                    </div>
+                    <div class="form-group">
+                      <label for="out">Confirm Password</label>
+                      <input type="text" class="form-control" id="out" formControlName="outtime"
+                             name="out" placeholder="Out-Time">
+                    </div>
+                    <button type="submit" class="btn btn-default" [disabled]="!addForm.valid">Add Visitor</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container-fluid">
+        <p class="copyright pull-right">
+          &copy; 2016 <a href="http://www.tudip.com">Tudip Technologies</a>, "We Rock"
+        </p>
+      </div>
+    </footer>
+  </div>
+</div>
+
+
