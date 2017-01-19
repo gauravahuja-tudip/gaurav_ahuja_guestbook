@@ -1,1 +1,95 @@
-<h1>Dashboard</h1>
+<div class="wrapper">
+  <div class="sidebar" data-color="purple">
+    <div class="sidebar-wrapper">
+      <div class="logo">
+        <a href="http://www.tudip.com" class="simple-text">
+          Tudip Technologies
+        </a>
+      </div>
+
+      <ul class="nav">
+        <li>
+          <a routerLink="/dashboard" routerLinkActive="active">
+            <p>Visitors</p>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/add_visitor" routerLinkActive="active">
+            <p>Add Visitor</p>
+          </a>
+        </li>
+        <li>
+          <a routerLink="" routerLinkActive="active">
+            <p (click)="logout()">Logout</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-panel">
+    <nav class="navbar navbar-default navbar-fixed">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="navbar-brand">Tudip Visitors</div>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="header">
+                <h4 class="title">Visitors List</h4>
+              </div>
+              <div class="content table-responsive table-full-width">
+                <table class="table table-hover table-striped">
+                  <thead>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Mobile</th>
+                  <th>In Time</th>
+                  <th>Out Time</th>
+                  <th>Operation</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor = "let visitor of allVisitors">
+
+                      <td>{{visitor._id}}</td>
+                      <td>{{visitor.name}}</td>
+                      <td>{{visitor.email}}</td>
+                      <td>{{visitor.mobile}}</td>
+                      <td>{{visitor.intime}}</td>
+                      <td>{{visitor.outtime}}</td>
+                      <td>  <input type="button" value="Delete" (click)="visitordelete(visitor._id)">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container-fluid">
+        <p class="copyright pull-right">
+          &copy; 2016 <a href="http://www.tudip.com">Tudip Technologies</a>, "We Rock"
+        </p>
+      </div>
+    </footer>
+  </div>
+</div>
