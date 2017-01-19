@@ -10,8 +10,11 @@
     <br>
     <div class="tab-content">
         <div id="login_form_link" class="tab-pane fade in active">
+            <div [hidden]="correctemail && correctpassword" class="alert alert-danger">
+              Incorrect Email or Password.
+            </div>
             <div [hidden]="submitted">
-                <form *ngIf="loginForm" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+                <form *ngIf="loginForm" (ngSubmit)="loginSubmit(loginForm)" [formGroup]="loginForm">
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input type="email" class="form-control" id="username" formControlName="username"
@@ -30,14 +33,17 @@
                             Password is required.
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-default" [disabled]="!loginForm.valid" [routerLink]="['/dashboard']">Login</button>
+                    <button type="submit" class="btn btn-default" [disabled]="!loginForm.valid">Login</button>
                 </form>
             </div>
         </div>
 
         <div id="register_form_link" class="tab-pane fade">
+          <div *ngIf="regSuccess" class="alert alert-success">
+            User Registration Successful.
+          </div>
             <div [hidden]="submitted">
-                <form *ngIf="registerForm" (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+                <form *ngIf="registerForm" (ngSubmit)="registerSubmit(registerForm)" [formGroup]="registerForm">
                     <div class="form-group">
                         <label for="firstname">Firstname</label>
                         <input type="text" class="form-control" id="firstname" formControlName="firstname"
@@ -64,6 +70,9 @@
                              class="alert alert-danger">
                             Email Address is required.
                         </div>
+                      <div *ngIf="emailExist" class="alert alert-danger">
+                        Email Address is already registered.
+                      </div>
                     </div>
                     <div class="form-group">
                         <label for="newpassword">New Password</label>
@@ -82,8 +91,12 @@
                              class="alert alert-danger">
                             Password is required.
                         </div>
+                      <div [hidden]="matchpassword" class="alert alert-danger">
+                        Passwords are not matching.
+                      </div>
                     </div>
-                    <button type="submit" class="btn btn-default" [disabled]="!registerForm.valid" [routerLink]="['/']">Register</button>
+                    <button type="submit" class="btn btn-default" [disabled]="!registerForm.valid">Register</button>
+                    <button class="btn btn-default" (click)="resetForm()">Reset</button>
                 </form>
             </div>
         </div>
