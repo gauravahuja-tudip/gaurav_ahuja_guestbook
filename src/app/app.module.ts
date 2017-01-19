@@ -6,23 +6,29 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from 'app/Login/login.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from 'app/dashboard/dashboard.component';
+import { AddVisitorComponent } from 'app/dashboard/addVisitor/add.visitor.component';
 import { RouterModule } from '@angular/router';
-import { DashboardAppRoutes } from 'app/app.routing';
+import { AppRoutes } from 'routes/app.routing';
+import { HttpClientHelper } from '../services/http.call.service';
+import { UserService } from '../services/user.authentication.service';
+import { AddService } from "../services/add.visitor.service";
+import { ViewService } from "../services/view.visitors.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-      DashboardComponent
+    DashboardComponent,
+    AddVisitorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(DashboardAppRoutes)
+    RouterModule.forRoot(AppRoutes)
   ],
-  providers: [],
+  providers: [HttpClientHelper, UserService, AddService, ViewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
